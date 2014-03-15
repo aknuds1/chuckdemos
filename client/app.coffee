@@ -12,8 +12,8 @@ class NavItem
       @classNames += " active"
 
 class DropdownItem
-  constructor: (@text, routeName, activePath) ->
-    @url = Router.routes[routeName].path()
+  constructor: (@text, url, activePath) ->
+    @url = "/demos/#{url}"
     isActive = activePath == @url
     @classNames = []
     if isActive
@@ -21,12 +21,10 @@ class DropdownItem
 
 Template.layout.navItems = ->
   activePath = Router.current().path
+  examples = Demos.find().map((demo) -> new DropdownItem(demo.name, demo.path, activePath))
+
   [
     new NavItem("Home", "home", activePath),
-    new NavItem("Examples", null, activePath, [
-      new DropdownItem("Demo0", "demo0", activePath),
-      new DropdownItem("Demo1", "demo1", activePath),
-      new DropdownItem("Demo2", "demo2", activePath)
-    ]),
+    new NavItem("Examples", null, activePath, examples),
     new NavItem("About", "about", activePath)
   ]

@@ -14,20 +14,7 @@ Router.map(->
   )
 )
 Router.map(->
-  @route("demo0",
-    path: "/demos/basic/demo0"
-    template: "demo0"
-  )
-)
-Router.map(->
-  @route("demo1",
-    path: "/demos/basic/demo1"
-    template: "demo1"
-  )
-)
-Router.map(->
-  @route("demo2",
-    path: "/demos/basic/demo2"
-    template: "demo2"
+  @route("demo",
+    path: "/demos/:demo(*)"
   )
 )
