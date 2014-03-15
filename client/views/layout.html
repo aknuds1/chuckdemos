@@ -1,0 +1,37 @@
+<template name="layout">
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">ChucK Demos</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          {{#each navItems}}
+          <li class="{{classNames}}">
+            {{#unless isDropdown}}
+            <a href="{{url}}">{{text}}</a>
+            {{else}}
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{text}}</a>
+            <ul class="dropdown-menu" role="menu">
+              {{#each dropdownItems}}
+              <li class="{{classNames}}" role="presentation">
+                <a role="menuitem" tabindex="-1" href="{{url}}">{{text}}</a>
+              </li>
+              {{/each}}
+            </ul>
+            {{/unless}}
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container" role="main">
+    {{yield}}
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">© 2014 Arve Knudsen</p>
+    </div>
+  </div>
+</template>
