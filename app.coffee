@@ -1,6 +1,12 @@
-Demos = new Meteor.Collection("Demos")
+Logger.setLevel('debug')
+@Log = new Logger("ChuckDemos")
+chuckLog = new Logger("ChucKJS")
+
 if Meteor.isClient
-  window.Demos = Demos
+  chuckModule = require('chuck')
+  chuckModule.setLogger(chuckLog)
+
+@Demos = new Meteor.Collection("Demos")
 
 class Demo
   constructor: (@path, @name, @description, @code) ->

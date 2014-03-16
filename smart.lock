@@ -11,6 +11,9 @@
       "chuckjs": {
         "git": "https://github.com/aknuds1/meteor-chuckjs.git",
         "branch": "master"
+      },
+      "pince": {
+        "version": "0.0.5"
       }
     },
     "packages": {
@@ -29,6 +32,11 @@
         "branch": "master",
         "commit": "e48509578fb809c2cf3d53064f5d83e86a4a8a0b"
       },
+      "pince": {
+        "git": "https://github.com/mad-eye/pince.git",
+        "tag": "v0.0.5",
+        "commit": "4524ecc0bdf043c49dc62e91bbd8a99c661081ed"
+      },
       "q": {
         "git": "https://github.com/frozeman/q-meteor.git",
         "tag": "v0.9.7",
@@ -42,7 +50,7 @@
       "require": {
         "git": "https://github.com/aknuds1/meteor-require.git",
         "branch": "fixes",
-        "commit": "a70b87712225e09812c39af1ef72c4712c919feb"
+        "commit": "c403a1abc086c112d7ece7a7b770b8e447831ac0"
       },
       "lodash": {
         "git": "https://github.com/alethes/meteor-lodash.git",
