@@ -12,9 +12,9 @@ Template.demo.events(
     code = getDemo().code
     chuck.execute(code)
     .done(->
-      console.log("ChucK execution finished")
+      @Log.debug("ChucK execution finished")
     , ->
-      console.log("ChucK execution failed!")
+      @Log.debug("ChucK execution failed")
     )
     return
 )
