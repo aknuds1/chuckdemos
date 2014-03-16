@@ -1,7 +1,14 @@
 {
   "packages": {
     "bootstrap-3": {},
-    "iron-router": {},
+    "iron-router": {
+      "git": "https://github.com/EventedMind/iron-router.git",
+      "branch": "blaze-integration"
+    },
+    "blaze-layout": {
+      "git": "https://github.com/EventedMind/blaze-layout.git",
+      "branch": "devel"
+    },
     "chuckjs": {
       "git": "https://github.com/aknuds1/meteor-chuckjs.git"
     },

@@ -6,7 +6,12 @@
         "version": "3.1.1-1"
       },
       "iron-router": {
-        "version": "0.6.4"
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "branch": "blaze-integration"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "branch": "devel"
       },
       "chuckjs": {
         "git": "https://github.com/aknuds1/meteor-chuckjs.git",
@@ -24,8 +29,13 @@
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.4",
-        "commit": "927bbaed1b87894fb6fb70807f74ff3a5bd89f29"
+        "branch": "blaze-integration",
+        "commit": "919e7339948fcc5091ddcd2112b91a74261c86dd"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "branch": "devel",
+        "commit": "f52f416d6277f27b11832355298553e46b8cc6fd"
       },
       "chuckjs": {
         "git": "https://github.com/aknuds1/meteor-chuckjs.git",
