@@ -7,6 +7,10 @@
       },
       "iron-router": {
         "version": "0.6.4"
+      },
+      "chuckjs": {
+        "git": "https://github.com/aknuds1/meteor-chuckjs.git",
+        "branch": "master"
       }
     },
     "packages": {
@@ -19,6 +23,31 @@
         "git": "https://github.com/EventedMind/iron-router.git",
         "tag": "v0.6.4",
         "commit": "927bbaed1b87894fb6fb70807f74ff3a5bd89f29"
+      },
+      "chuckjs": {
+        "git": "https://github.com/aknuds1/meteor-chuckjs.git",
+        "branch": "master",
+        "commit": "e48509578fb809c2cf3d53064f5d83e86a4a8a0b"
+      },
+      "q": {
+        "git": "https://github.com/frozeman/q-meteor.git",
+        "tag": "v0.9.7",
+        "commit": "e5c10f087b76fda32ae6be4d8950ab2633c520a3"
+      },
+      "underscore-string-latest": {
+        "git": "https://github.com/TimHeckel/meteor-underscore-string.git",
+        "tag": "v2.3.3",
+        "commit": "4a5d70eee48fbd90a6e6fc78747250d704a0b3bb"
+      },
+      "require": {
+        "git": "https://github.com/aknuds1/meteor-require.git",
+        "branch": "fixes",
+        "commit": "a70b87712225e09812c39af1ef72c4712c919feb"
+      },
+      "lodash": {
+        "git": "https://github.com/alethes/meteor-lodash.git",
+        "tag": "v0.7.0",
+        "commit": "0d4d8b43728f3ad1b54268148e61de398a3a4840"
       }
     }
   }

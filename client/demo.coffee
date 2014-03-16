@@ -4,8 +4,17 @@ getDemo = ->
 
 Template.demo.params = getDemo
 
+Chuck = require("chuck").Chuck
+chuck = new Chuck()
+
 Template.demo.events(
   "click #execute-chuck": ->
     code = getDemo().code
-    console.log("Executing code:\n#{code}")
+    chuck.execute(code)
+    .done(->
+      console.log("ChucK execution finished")
+    , ->
+      console.log("ChucK execution failed!")
+    )
+    return
 )
