@@ -1,23 +1,37 @@
+# Process values of attributes into space separated strings
+processAttrs = (attrs) ->
+  for own k, v of attrs
+    attrs[k] = _.join.apply(null, [" "].concat(v))
+    if _.isBlank(attrs[k])
+      delete attrs[k]
+  attrs
+
 class NavItem
   constructor: (@text, routeName, activePath, @dropdownItems=null) ->
     @isDropdown = @dropdownItems?
     if !@isDropdown
       @url = Router.routes[routeName].path()
       isActive = activePath == @url
-    @classNames = ""
+
+    attrs =
+      "class": []
     if @isDropdown
       isActive = activePath.slice(0, 6) == "/demos"
-      @classNames += " dropdown"
+      attrs["class"].push("dropdown")
     if isActive
-      @classNames += " active"
+      attrs["class"].push("active")
+    @attrs = processAttrs(attrs)
 
 class DropdownItem
   constructor: (@text, url, activePath) ->
     @url = "/demos/#{url}"
     isActive = activePath == @url
-    @classNames = []
+    attrs =
+      "class": []
     if isActive
-      @classNames.push("active")
+      attrs["class"].push("active")
+
+    @attrs = processAttrs(attrs)
 
 Template.layout.navItems = ->
   activePath = Router.current().path

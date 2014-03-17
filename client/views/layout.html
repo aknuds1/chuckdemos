@@ -7,14 +7,14 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           {{#each navItems}}
-          <li class="{{classNames}}">
+          <li {{attrs}}>
             {{#unless isDropdown}}
             <a href="{{url}}">{{text}}</a>
             {{else}}
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{text}}</a>
             <ul class="dropdown-menu" role="menu">
               {{#each dropdownItems}}
-              <li class="{{classNames}}" role="presentation">
+              <li {{attrs}} role="presentation">
                 <a role="menuitem" tabindex="-1" href="{{url}}">{{text}}</a>
               </li>
               {{/each}}
