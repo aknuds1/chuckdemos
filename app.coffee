@@ -1,4 +1,4 @@
-Logger.setLevel('debug')
+Logger.setLevel('info')
 @Log = new Logger("ChuckDemos")
 chuckLog = new Logger("ChucKJS")
 
