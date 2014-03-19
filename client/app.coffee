@@ -34,6 +34,10 @@ class DropdownItem
     @attrs = processAttrs(attrs)
 
 Template.layout.navItems = ->
+  if !Router.current()?
+    Log.warn("Router isn't yet defined")
+    return []
+
   activePath = Router.current().path
   demos = Demos.find().map((demo) -> new DropdownItem(demo.name, demo.path, activePath))
 
