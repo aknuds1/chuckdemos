@@ -2,9 +2,7 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "bootstrap-3": {
-        "version": "3.1.1-1"
-      },
+      "bootstrap-3": {},
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
         "branch": "blaze-integration"
@@ -13,9 +11,7 @@
         "git": "https://github.com/aknuds1/meteor-chuckjs.git",
         "branch": "master"
       },
-      "pince": {
-        "version": "0.0.5"
-      }
+      "pince": {}
     },
     "packages": {
       "bootstrap-3": {
