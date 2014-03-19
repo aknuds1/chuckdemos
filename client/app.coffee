@@ -35,10 +35,10 @@ class DropdownItem
 
 Template.layout.navItems = ->
   activePath = Router.current().path
-  examples = Demos.find().map((demo) -> new DropdownItem(demo.name, demo.path, activePath))
+  demos = Demos.find().map((demo) -> new DropdownItem(demo.name, demo.path, activePath))
 
   [
     new NavItem("Home", "home", activePath),
-    new NavItem("Examples", null, activePath, examples),
+    new NavItem("Demos", null, activePath, demos),
     new NavItem("About", "about", activePath)
   ]
