@@ -6,10 +6,9 @@
 standard-app-packages
 autopublish
 insecure
-preserve-inputs
 bootstrap-3
-iron-router
 coffeescript
 stylus
 chuckjs
 pince
+iron-router
