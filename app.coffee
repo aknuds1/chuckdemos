@@ -13,8 +13,7 @@ class Demo
 
 if Meteor.isServer
   Meteor.startup(->
-    if Demos.find().count() != 0
-      return
+    Demos.remove({})
 
     Demos.insert(new Demo("basic/demo0", "Demo 0", "Basic demo showing time and duration.", """5::second + now => time later;
 
@@ -56,4 +55,28 @@ for(0 => int i; i<5; i++) {
 
 }
 """))
-  )
+    Demos.insert(new Demo("basic/demo3", "Demo 3", "Super lame", """Gain g => dac;
+// set gain
+.5 => g.gain;
+
+110.0 => float freq;
+6 => int x;
+
+// loop
+while( x > 0 )
+{
+    // connect to gain
+    SinOsc s => g;
+    // change frequency
+    freq => s.freq;
+    freq * 2.0 => freq;
+    // decrement x
+    1 -=> x;
+
+    // advance time by 1 second
+    1::second => now;
+    // disconnect the sinosc
+    s =< g;
+}
+"""))
+)
