@@ -46,3 +46,7 @@ Template.layout.navItems = ->
     new NavItem("Demos", null, activePath, demos),
     new NavItem("About", "about", activePath)
   ]
+
+Meteor.startup(->
+  Meteor.subscribe("demos")
+)

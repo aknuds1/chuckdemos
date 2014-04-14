@@ -15,6 +15,8 @@ class Demo
 
 if Meteor.isServer
   Meteor.startup(->
+    Meteor.publish("demos", -> Demos.find())
+
     Demos.remove({})
 
     Demos.insert(new Demo("basic/demo0", "Demo 0", "Basic demo showing time and duration.", """5::second + now => time later;
