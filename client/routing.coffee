@@ -16,5 +16,18 @@ Router.map(->
 Router.map(->
   @route("demo",
     path: "/demos/:demo(*)"
+    onAfterAction: ->
+      if !Meteor.isClient
+        return
+
+      demo = Demos.findOne(path: this.params.demo)
+      if !demo?
+        return
+
+      SEO.set(
+        title: "ChucK Demo: #{demo.name}"
+        meta:
+          description: demo.description
+      )
   )
 )
