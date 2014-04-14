@@ -15,11 +15,20 @@ class Demo
 
 if Meteor.isServer
   Meteor.startup(->
-    Meteor.publish("demos", -> Demos.find())
+    SeoCollection.insert(
+      route_name: "about"
+      title: "About ChucK Demos"
+      meta:
+        description: "The main purpose of the ChucK Demos site is to provide a repository of ChucK demo
+         programs that can also be heard right inside the browser. Its secondary purpose is to showcase the
+         ChucKJS JavaScript library, which is made by the site's author."
+    )
 
+    Meteor.publish("demos", -> Demos.find())
     Demos.remove({})
 
-    Demos.insert(new Demo("basic/demo0", "Demo 0", "Basic demo showing time and duration.", """5::second + now => time later;
+    Demos.insert(new Demo("basic/demo0", "Demo 0", "Basic demo showing time and duration.",
+      """5::second + now => time later;
 
 while( now < later )
 {
