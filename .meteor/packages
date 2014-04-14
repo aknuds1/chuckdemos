@@ -12,3 +12,5 @@ stylus
 chuckjs
 pince
 iron-router
+define
+lodash
