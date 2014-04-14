@@ -8,7 +8,8 @@
         "branch": "master"
       },
       "pince": {},
-      "iron-router": {}
+      "iron-router": {},
+      "ms-seo": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -30,6 +31,11 @@
         "git": "https://github.com/EventedMind/iron-router.git",
         "tag": "v0.7.0",
         "commit": "05f34bc48c4cad9fdaa366c1ddcabe6980232ece"
+      },
+      "ms-seo": {
+        "git": "https://github.com/DerMambo/ms-seo",
+        "tag": "v0.2.6",
+        "commit": "1a4ba31a1f6f29009d3941e9dd883829ff4e4b8b"
       },
       "q": {
         "git": "https://github.com/frozeman/q-meteor.git",

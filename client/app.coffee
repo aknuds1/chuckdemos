@@ -49,4 +49,10 @@ Template.layout.navItems = ->
 
 Meteor.startup(->
   Meteor.subscribe("demos")
+
+  SEO.config(
+    title: 'ChucK Demos'
+    meta:
+      description: "Executable demos of the ChucK music programming language"
+  )
 )

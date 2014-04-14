@@ -5,6 +5,7 @@
       "git": "https://github.com/aknuds1/meteor-chuckjs.git"
     },
     "pince": {},
-    "iron-router": {}
+    "iron-router": {},
+    "ms-seo": {}
   }
 }
