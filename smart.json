@@ -6,6 +6,7 @@
     },
     "pince": {},
     "iron-router": {},
-    "ms-seo": {}
+    "ms-seo": {},
+    "phantomjs": {}
   }
 }
