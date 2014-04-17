@@ -56,6 +56,11 @@ Template.layout.socialLinks = [
   icon: "github"
 ]
 
+Template.soundIcon.rendered = ->
+  $haveTooltips = $(this.findAll("[data-toggle='tooltip']"))
+  $haveTooltips.tooltip()
+  return
+
 Meteor.startup(->
   Meteor.subscribe("demos")
 
