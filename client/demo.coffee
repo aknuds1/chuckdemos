@@ -8,7 +8,7 @@ Template.demo.helpers(
   isExecuting: -> Session.get("chuckExecuting")
   hasSound: ->
     demo = Template.demo.params()
-    demo.hasSound
+    demo? && demo.hasSound
 )
 
 Chuck = require("chuck").Chuck
