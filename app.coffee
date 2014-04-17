@@ -11,7 +11,7 @@ if Meteor.isClient
 @Demos = new Meteor.Collection("Demos")
 
 class Demo
-  constructor: (@path, @name, @description, @code) ->
+  constructor: (@path, @name, @description, @code, @hasSound) ->
 
 if Meteor.isServer
   Meteor.startup(->
@@ -67,7 +67,7 @@ for(0 => int i; i<5; i++) {
   1::second => now;
 
 }
-"""))
+""", true))
     Demos.insert(new Demo("basic/demo3", "Demo 3", "Super lame", """Gain g => dac;
 // set gain
 .5 => g.gain;
@@ -91,7 +91,7 @@ while( x > 0 )
     // disconnect the sinosc
     s =< g;
 }
-"""))
+""", true))
     Demos.insert(new Demo("basic/adsr", "ADSR", "An ADSR envelope", """SinOsc s => ADSR e => dac;
 // set a, d, s, and r
 e.set( 10::ms, 8::ms, .5, 500::ms );
@@ -113,7 +113,7 @@ while( true )
     // advance time by 800 ms
     800::ms => now;
 }
-"""))
+""", true))
     Demos.insert(new Demo("basic/alarm", "Alarm", "An alarm clock.", """// how long
 10::second => dur T;
 // frequency
@@ -145,5 +145,5 @@ while( true )
     0.0 => s.gain;
     300::ms => now;
 }
-"""))
+""", true))
 )

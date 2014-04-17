@@ -23,7 +23,7 @@ class NavItem
     @attrs = processAttrs(attrs)
 
 class DropdownItem
-  constructor: (@text, path, activePath) ->
+  constructor: (@text, path, activePath, @hasSound) ->
     @url = "/demos/#{path}"
     isActive = activePath == @url
     attrs =
@@ -39,7 +39,8 @@ Template.layout.navItems = ->
     return []
 
   activePath = Router.current().path
-  demos = Demos.find({}, sort: ["path"]).map((demo) -> new DropdownItem(demo.name, demo.path, activePath))
+  demos = Demos.find({}, sort: ["path"]).map((demo) -> new DropdownItem(demo.name, demo.path, activePath,
+  demo.hasSound))
 
   [
     new NavItem("Home", "home", activePath),
