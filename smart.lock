@@ -22,7 +22,7 @@
       "chuckjs": {
         "git": "https://github.com/aknuds1/meteor-chuckjs.git",
         "branch": "master",
-        "commit": "5e0e4492a0fabc9b56fb8e90d7b6e62c2b2597cc"
+        "commit": "a0f3dc8422ed31c1e057d034f08a0312b6d8484a"
       },
       "pince": {
         "git": "https://github.com/mad-eye/pince.git",
