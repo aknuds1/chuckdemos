@@ -5,7 +5,7 @@ getDemo = ->
 Template.demo.params = getDemo
 
 Chuck = require("chuck").Chuck
-chuck = new Chuck()
+window.Chuck = chuck = new Chuck()
 
 Template.demo.events(
   "click #execute-chuck": ->

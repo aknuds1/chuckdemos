@@ -30,4 +30,10 @@ Router.map(->
           description: demo.description
       )
   )
+
+  Router.before(->
+    # Eventually stop ChucK playback
+    if window.Chuck? && Chuck.isExecuting()
+      window.Chuck.stop()
+  )
 )
