@@ -32,8 +32,9 @@
   <div id="footer">
     <hr class="no-top-margin">
     <div id="social" class="footer-content">
-      <a href="https://twitter.com/chuckdemos"><i class="fa fa-twitter"></i></a>
-      <a href="http://github.com/aknuds1/chuckjs"><i class="fa fa-github"></i></a>
+      {{#each socialLinks}}
+      <a href="{{url}}" target="_blank"><i class="fa fa-{{icon}}"></i></a>
+      {{/each}}
     </div>
     <div class="footer-content">
       <span class="text-muted">© 2014 Arve Knudsen</span>&nbsp;

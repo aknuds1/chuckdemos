@@ -47,6 +47,14 @@ Template.layout.navItems = ->
     new NavItem("About", "about", activePath)
   ]
 
+Template.layout.socialLinks = [
+  url: "https://twitter.com/chuckdemos"
+  icon: "twitter"
+,
+  url: "http://github.com/aknuds1/chuckjs"
+  icon: "github"
+]
+
 Meteor.startup(->
   Meteor.subscribe("demos")
 
