@@ -35,5 +35,7 @@ Router.map(->
     # Eventually stop ChucK playback
     if window.Chuck? && Chuck.isExecuting()
       window.Chuck.stop()
+      # TODO: Refactor!
+      .done(-> Session.set("chuckExecuting", false))
   )
 )

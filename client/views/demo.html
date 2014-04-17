@@ -3,7 +3,13 @@
     <h1>{{params.name}}</h1>
     <p>{{params.description}}</p>
   </div>
-  <button type="button" id="execute-chuck" class="btn btn-primary"><i class="fa fa-play"></i></button>
+  <button type="button" id="execute-chuck" class="btn btn-primary">
+    {{#if isExecuting}}
+    <i class="fa fa-stop"></i>
+    {{else}}
+    <i class="fa fa-play"></i>
+    {{/if}}
+  </button>
   <div class="chuck-code">
     <pre class="no-btm-margin">{{params.code}}</pre>
   </div>
