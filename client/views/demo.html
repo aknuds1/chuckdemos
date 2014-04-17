@@ -1,6 +1,6 @@
 <template name="demo">
   <div class="jumbotron">
-    <h1>{{params.name}}</h1>
+    <h1>{{params.name}}{{#if hasSound}}{{> soundIcon}}{{/if}}</h1>
     <p>{{params.description}}</p>
   </div>
   <button type="button" id="execute-chuck" class="btn btn-primary">

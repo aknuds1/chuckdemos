@@ -17,7 +17,7 @@
               <li {{attrs}} role="presentation">
                 <a role="menuitem" tabindex="-1" href="{{url}}">
                   {{text}}
-                  {{#if hasSound}}&nbsp;<i class="fa fa-headphones"></i>{{/if}}
+                  {{#if hasSound}}{{> soundIcon}}{{/if}}
                 </a>
               </li>
               {{/each}}

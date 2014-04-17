@@ -31,7 +31,7 @@ Router.map(->
       )
   )
 
-  Router.before(->
+  Router.onBeforeAction(->
     # Eventually stop ChucK playback
     if window.Chuck? && Chuck.isExecuting()
       window.Chuck.stop()
