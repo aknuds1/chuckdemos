@@ -54,6 +54,9 @@ Template.layout.socialLinks = [
 ,
   url: "http://github.com/aknuds1/chuckjs"
   icon: "github"
+,
+  url: "https://groups.google.com/forum/#!forum/chuckjs"
+  icon: "envelope"
 ]
 
 Template.soundIcon.rendered = ->
