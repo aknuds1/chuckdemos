@@ -2,16 +2,28 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "bootstrap-3": {},
+      "bootstrap-3": {
+        "version": "3.1.1-1"
+      },
       "chuckjs": {
         "git": "https://github.com/aknuds1/meteor-chuckjs.git",
         "branch": "master"
       },
-      "pince": {},
-      "iron-router": {},
-      "ms-seo": {},
-      "phantomjs": {},
-      "font-awesome": {}
+      "pince": {
+        "version": "0.0.5"
+      },
+      "iron-router": {
+        "version": "0.7.1"
+      },
+      "ms-seo": {
+        "version": "0.2.6"
+      },
+      "phantomjs": {
+        "version": "0.0.2"
+      },
+      "font-awesome": {
+        "version": "4.0.3"
+      }
     },
     "packages": {
       "bootstrap-3": {
