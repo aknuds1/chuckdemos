@@ -20,7 +20,7 @@ Template.demo.events(
       if !Session.get("chuckExecuting")
         @Log.debug("Starting ChucK execution")
         Session.set("chuckExecuting", true)
-        chuck.execute(code)
+        chuck.execute(code, args)
         .done(->
           Session.set("chuckExecuting", false)
           @Log.debug("ChucK execution finished")
@@ -37,7 +37,7 @@ Template.demo.events(
         )
       return
 
-    code = getDemo().code
+    {code, args} = getDemo()
     if chuck.isExecuting()
       chuck.stop()
       .done(->
