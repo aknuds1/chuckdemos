@@ -33,31 +33,34 @@ class DropdownItem
 
     @attrs = processAttrs(attrs)
 
-Template.layout.navItems = ->
-  if !Router.current()?
-    Log.warn("Router isn't yet defined")
-    return []
 
-  activePath = Router.current().path
-  demos = Demos.find({}, sort: ["path"]).map((demo) -> new DropdownItem(demo.name, demo.path, activePath,
-  demo.hasSound))
+Template.layout.helpers(
+  navItems: ->
+    if !Router.current()?
+      Log.warn("Router isn't yet defined")
+      return []
 
-  [
-    new NavItem("Home", "home", activePath),
-    new NavItem("Demos", null, activePath, demos),
-    new NavItem("About", "about", activePath)
+    activePath = Router.current().path
+    demos = Demos.find({}, sort: ["path"]).map((demo) -> new DropdownItem(demo.name, demo.path, activePath,
+      demo.hasSound))
+    [
+      new NavItem("Home", "home", activePath),
+      new NavItem("Demos", null, activePath, demos),
+      new NavItem("About", "about", activePath)
+    ]
+  socialLinks: [
+    url: "https://twitter.com/chuckdemos"
+    icon: "twitter"
+  ,
+    url: "http://github.com/aknuds1/chuckjs"
+    icon: "github"
+  ,
+    url: "https://groups.google.com/forum/#!forum/chuckjs"
+    icon: "envelope"
   ]
-
-Template.layout.socialLinks = [
-  url: "https://twitter.com/chuckdemos"
-  icon: "twitter"
-,
-  url: "http://github.com/aknuds1/chuckjs"
-  icon: "github"
-,
-  url: "https://groups.google.com/forum/#!forum/chuckjs"
-  icon: "envelope"
-]
+  officialDemosPorted: -> Demos.find().count()
+  officialDemosRemaining: 317
+)
 
 Template.soundIcon.rendered = ->
   $haveTooltips = $(this.findAll("[data-toggle='tooltip']"))
