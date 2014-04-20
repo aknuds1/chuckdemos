@@ -15,7 +15,8 @@ try:
 Disallow: /
 """)
 
-  subprocess.check_call(["meteor", "deploy", 'chuckdemos.meteor.com'])
+  subprocess.check_call(['mrt'])
+  subprocess.check_call(['meteor', 'deploy', 'chuckdemos.meteor.com'])
 finally:
   if robots is not None:
     os.remove(robots.name)
