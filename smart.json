@@ -2,7 +2,8 @@
   "packages": {
     "bootstrap-3": {},
     "chuckjs": {
-      "git": "https://github.com/aknuds1/meteor-chuckjs.git"
+      "git": "https://github.com/aknuds1/meteor-chuckjs.git",
+      "tag": "0.0.14"
     },
     "pince": {},
     "iron-router": {},
