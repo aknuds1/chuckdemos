@@ -2,28 +2,16 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "bootstrap-3": {
-        "version": "3.1.1-1"
-      },
+      "bootstrap-3": {},
       "chuckjs": {
         "git": "https://github.com/aknuds1/meteor-chuckjs.git",
         "branch": "master"
       },
-      "pince": {
-        "version": "0.0.5"
-      },
-      "iron-router": {
-        "version": "0.7.1"
-      },
-      "ms-seo": {
-        "version": "0.2.6"
-      },
-      "phantomjs": {
-        "version": "0.0.2"
-      },
-      "font-awesome": {
-        "version": "4.0.3"
-      }
+      "pince": {},
+      "iron-router": {},
+      "ms-seo": {},
+      "phantomjs": {},
+      "font-awesome": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -34,7 +22,7 @@
       "chuckjs": {
         "git": "https://github.com/aknuds1/meteor-chuckjs.git",
         "branch": "master",
-        "commit": "9fb7ec4c7bf65d823ee434ea61b8a3ffbe815b63"
+        "commit": "e6a4a543835d08bf8f4f59f8607a30241c159d5e"
       },
       "pince": {
         "git": "https://github.com/mad-eye/pince.git",

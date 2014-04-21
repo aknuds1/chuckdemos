@@ -69,7 +69,7 @@ Template.soundIcon.rendered = ->
 
 Meteor.startup(->
   Meteor.subscribe("demos")
-    
+
   SEO.config(
     title: 'ChucK Demos'
     meta:
