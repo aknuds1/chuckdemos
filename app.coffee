@@ -348,4 +348,25 @@ fun void chirp( float src, float target, dur duration, dur tinc )
     1 => e.keyOff;
 }
 """))
+
+    Demos.insert(new Demo("basic/comb", "Comb", "A simple comb filter.", """// feedforward
+Impulse imp => Gain out => dac;
+// feedback
+out => Delay delay => out;
+
+// our radius
+.99999 => float R;
+// our delay order
+500 => float L;
+// set delay
+L::samp => delay.delay;
+// set dissipation factor
+Math.pow( R, L ) => delay.gain;
+
+// fire impulse
+1 => imp.next;
+
+// advance time
+(Math.log(.0001) / Math.log(R))::samp => now;
+"""))
 )
