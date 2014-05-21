@@ -5,7 +5,7 @@
       "bootstrap-3": {},
       "chuckjs": {
         "git": "https://github.com/aknuds1/meteor-chuckjs.git",
-        "tag": "0.0.30"
+        "tag": "0.0.32"
       },
       "pince": {},
       "iron-router": {},
@@ -21,8 +21,8 @@
       },
       "chuckjs": {
         "git": "https://github.com/aknuds1/meteor-chuckjs.git",
-        "tag": "0.0.30",
-        "commit": "808e1168106f1cfccbda104f370bd2b756aa80b7"
+        "tag": "0.0.32",
+        "commit": "347d65be7e4041a4d04d80aa81f068c1e70da238"
       },
       "pince": {
         "git": "https://github.com/mad-eye/pince.git",
