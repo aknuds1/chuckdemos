@@ -6,7 +6,7 @@ chuckLog = new Logger("ChucKJS")
 
 if Meteor.isClient
   chuckModule = require('chuck')
-  chuckModule.setLogger(chuckLog)
+  #chuckModule.setLogger(chuckLog)
 
 @Demos = new Meteor.Collection("Demos")
 
@@ -348,7 +348,6 @@ fun void chirp( float src, float target, dur duration, dur tinc )
     1 => e.keyOff;
 }
 """))
-
     Demos.insert(new Demo("basic/comb", "Comb", "A simple comb filter.", """// feedforward
 Impulse imp => Gain out => dac;
 // feedback
@@ -369,7 +368,6 @@ Math.pow( R, L ) => delay.gain;
 // advance time
 (Math.log(.0001) / Math.log(R))::samp => now;
 """))
-
     Demos.insert(new Demo("basic/curly", "Curly", "One out of three stooges.", """// impulse to filter to dac
 Impulse i => BiQuad f => dac;
 // set the filter's pole radius
@@ -394,7 +392,6 @@ while( true )
     101::ms => now;
 }
 """))
-
     Demos.insert(new Demo("basic/envelope", "Envelope", "Run white noise through envelope.", """// run white noise through envelope
 Noise n => Envelope e => dac;
 
@@ -415,5 +412,56 @@ while( true )
     // advance time by 800 ms
     800::ms => now;
 }
+"""))
+    Demos.insert(new Demo("basic/fm", "FM", "FM synthesis by hand.", """// carrier
+SinOsc c => dac;
+// modulator
+SinOsc m => blackhole;
+
+// carrier frequency
+220 => float cf;
+// modulator frequency
+550 => float mf => m.freq;
+// index of modulation
+200 => float index;
+
+// time-loop
+while( true )
+{
+    // modulate
+    cf + (index * m.last()) => c.freq;
+    // advance time by 1 samp
+    1::samp => now;
+}
+"""))
+    Demos.insert(new Demo("basic/fm2", "FM2", "Basic FM synthesis using sinosc.", """// modulator to carrier
+SinOsc m => SinOsc c => dac;
+
+// carrier frequency
+220 => c.freq;
+// modulator frequency
+20 => m.freq;
+// index of modulation
+200 => m.gain;
+
+// phase modulation is FM synthesis (sync is 2)
+2 => c.sync;
+
+// time-loop
+while( true ) 1::second => now;
+"""))
+    Demos.insert(new Demo("basic/fm3", "FM3", "Actual FM using sinosc (sync is 0). (Note: this is not quite
+     the classic \"FM synthesis\"; also see FM2)", """// modulator to carrier
+SinOsc m => SinOsc c => dac;
+
+// carrier frequency
+220 => c.freq;
+// modulator frequency
+20 => m.freq;
+// index of modulation
+200 => m.gain;
+
+// time-loop
+while( true ) 1::second => now;
 """))
 )
