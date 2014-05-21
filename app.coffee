@@ -464,4 +464,18 @@ SinOsc m => SinOsc c => dac;
 // time-loop
 while( true ) 1::second => now;
 """))
+    Demos.insert(new Demo("basic/foo", "Foo", "Hello everyone. A chuck is born... Its first words:", """SinOsc s => JCRev r => dac;
+.2 => s.gain;
+.1 => r.mix;
+
+// an array
+[ 0, 2, 4, 7, 9, 11 ] @=> int hi[];
+
+while( true )
+{
+    Std.mtof( 45 + Math.random2(0,3) * 12 +
+        hi[Math.random2(0,hi.cap()-1)] ) => s.freq;
+    100::ms => now;
+}
+"""))
 )
