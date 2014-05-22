@@ -540,4 +540,64 @@ while( 1 )
     -v => v;
 }
 """))
+    Demos.insert(new Demo("basic/imp", "Imp", "Impulse generator is cool... This demo is not.",
+      """// connect impulse generator
+Impulse i => dac;
+.5 => i.gain;
+
+// emit impulse every so often
+2000 => int a;
+while( 1 )
+{
+    // set the next sample
+    1.0 => i.next;
+
+    // advance time
+    a::samp => now;
+    a - 8 => a; if( a <= 0 ) 2000 => a;
+}
+"""))
+    Demos.insert(new Demo("basic/unchuck", "Unchuck", "Temporary unchucking of UGen from output.",
+      """// noise generator, biquad filter, dac (audio output)
+Noise n => BiQuad f => dac;
+// set biquad pole radius
+.99 => f.prad;
+// set biquad gain
+.025 => f.gain;
+// set equal zeros
+1 => f.eqzs;
+// our float
+0.0 => float t;
+
+3::second + now => time later;
+// time-loop
+while( now < later )
+{
+    // sweep the filter resonant frequency
+    100.0 + Std.fabs(Math.sin(t)) * 1000.0 => f.pfreq;
+    t + .05 => t;
+    // advance time
+    100::ms => now;
+}
+
+// unlink the ugen f from dac
+f =< dac;
+
+// let more time pass
+3::second => now;
+
+// relink
+f => dac;
+
+// time-loop
+3::second + now => later;
+while( now < later )
+{
+    // resume sweep
+    100.0 + Std.fabs(Math.sin(t)) * 1000.0 => f.pfreq;
+    t + .05 => t;
+    // advance time
+    100::ms => now;
+}
+"""))
 )
