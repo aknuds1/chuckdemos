@@ -6,21 +6,28 @@ processAttrs = (attrs) ->
       delete attrs[k]
   attrs
 
-class NavItem
-  constructor: (@text, routeName, activePath, @dropdownItems=null) ->
-    @isDropdown = @dropdownItems?
-    if !@isDropdown
-      @url = Router.routes[routeName].path()
-      isActive = activePath == @url
-
+class NavItemBase
+  constructor: (@text, isActive, @isDropdown) ->
     attrs =
       "class": []
-    if @isDropdown
-      isActive = activePath.slice(0, 6) == "/demos"
-      attrs["class"].push("dropdown")
+
     if isActive
       attrs["class"].push("active")
+    if @isDropdown
+      attrs["class"].push("dropdown")
+
     @attrs = processAttrs(attrs)
+
+class FlatNavItem extends NavItemBase
+  constructor: (text, routeName, activePath) ->
+    @url = Router.routes[routeName].path()
+    isActive = activePath == @url
+
+    super(text, isActive, false)
+
+class DropDownNavItem extends NavItemBase
+  constructor: (text, isActive, @dropdownItems) ->
+    super(text, isActive, true)
 
 class DropdownItem
   constructor: (@text, path, activePath, @hasSound, @isOfficial) ->
@@ -33,7 +40,6 @@ class DropdownItem
 
     @attrs = processAttrs(attrs)
 
-
 Template.layout.helpers(
   navItems: ->
     if !Router.current()?
@@ -45,11 +51,13 @@ Template.layout.helpers(
       activePath, demo.hasSound, demo.isOfficial))
     officialDemos = _.filter(demos, (demo) -> demo.isOfficial)
     contribDemos = _.filter(demos, (demo) -> !demo.isOfficial)
+    isContribDemosActive = /^\/demos\/contrib\//.test(activePath)
+    isOfficialDemosActive = !isContribDemosActive && /^\/demos\//.test(activePath)
     [
-      new NavItem("Home", "home", activePath),
-      new NavItem("Demos", null, activePath, officialDemos),
-      new NavItem("Contributions", null, activePath, contribDemos),
-      new NavItem("About", "about", activePath)
+      new FlatNavItem("Home", "home", activePath),
+      new DropDownNavItem("Demos", isOfficialDemosActive, officialDemos),
+      new DropDownNavItem("Contributions", isContribDemosActive, contribDemos),
+      new FlatNavItem("About", "about", activePath)
     ]
   socialLinks: [
     url: "https://twitter.com/chuckdemos"
