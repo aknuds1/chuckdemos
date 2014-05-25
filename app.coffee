@@ -12,6 +12,7 @@ if Meteor.isClient
 
 class Demo
   constructor: (@path, @name, @description, @code, @hasSound=true, @args=[]) ->
+    @isOfficial = !_.startsWith(@path, "contrib")
 
 if Meteor.isServer
   Meteor.startup(->
@@ -650,7 +651,7 @@ while( true )
     5::ms => now;
 }
 """))
-    Demos.insert(new Demo("basic/risset", "Risset Harmonic Arpeggio",
+    Demos.insert(new Demo("contrib/risset", "Risset Harmonic Arpeggio",
       "Random Bitz' implementation of the Jean-Claude Risset harmonic arpeggio.",
       """fun void makeTable(float root, float partials[], float amps[], ADSR env, JCRev rev, Pan2 pan)
 {

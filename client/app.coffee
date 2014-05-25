@@ -23,7 +23,7 @@ class NavItem
     @attrs = processAttrs(attrs)
 
 class DropdownItem
-  constructor: (@text, path, activePath, @hasSound) ->
+  constructor: (@text, path, activePath, @hasSound, @isOfficial) ->
     @url = "/demos/#{path}"
     isActive = activePath == @url
     attrs =
@@ -41,11 +41,14 @@ Template.layout.helpers(
       return []
 
     activePath = Router.current().path
-    demos = Demos.find({}, sort: ["path"]).map((demo) -> new DropdownItem(demo.name, demo.path, activePath,
-      demo.hasSound))
+    demos = Demos.find({}, sort: ["path"]).map((demo) -> new DropdownItem(demo.name, demo.path,
+      activePath, demo.hasSound, demo.isOfficial))
+    officialDemos = _.filter(demos, (demo) -> demo.isOfficial)
+    contribDemos = _.filter(demos, (demo) -> !demo.isOfficial)
     [
       new NavItem("Home", "home", activePath),
-      new NavItem("Demos", null, activePath, demos),
+      new NavItem("Demos", null, activePath, officialDemos),
+      new NavItem("Contributions", null, activePath, contribDemos),
       new NavItem("About", "about", activePath)
     ]
   socialLinks: [
@@ -58,7 +61,7 @@ Template.layout.helpers(
     url: "https://groups.google.com/forum/#!forum/chuckjs"
     icon: "envelope"
   ]
-  officialDemosPorted: -> Demos.find().count()
+  officialDemosPorted: -> Demos.find({isOfficial: true}).count()
   officialDemosRemaining: 317
 )
 
