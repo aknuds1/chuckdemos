@@ -652,7 +652,7 @@ while( true )
 }
 """))
     Demos.insert(new Demo("contrib/risset", "Risset Harmonic Arpeggio",
-      "Random Bitz' implementation of the Jean-Claude Risset harmonic arpeggio.",
+      "Random Bitz' implementation of Jean-Claude Risset's harmonic arpeggio.",
       """fun void makeTable(float root, float partials[], float amps[], ADSR env, NRev rev, Pan2 pan)
 {
   SinOsc s[partials.size()];
