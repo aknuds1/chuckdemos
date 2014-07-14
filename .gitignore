@@ -3,3 +3,4 @@
 .idea/*.iws
 .idea/tasks.xml
 node_modules/
+.demeteorized/
