@@ -5,15 +5,16 @@
 
 standard-app-packages
 insecure
-bootstrap-3
 coffeescript
 stylus
 chuckjs
-pince
-iron-router
 define
 lodash
 spiderable
-ms-seo
-phantomjs
-font-awesome
+iron:router
+pinglamb:bootstrap3
+jag:pince
+natestrauser:font-awesome
+manuelschoebel:ms-seo
+gadicohen:phantomjs
+
