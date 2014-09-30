@@ -1,3 +1,4 @@
+amd:manager@0.0.5
 application-configuration@1.0.2
 autoupdate@1.1.1
 base64@1.0.0
@@ -41,6 +42,7 @@ minifiers@1.1.0
 minimongo@1.0.3
 mobile-status-bar@1.0.0
 mongo@1.0.6
+mrt:define@0.10.0
 natestrauser:font-awesome@4.2.0
 observe-sequence@1.0.2
 ordered-dict@1.0.0
@@ -57,6 +59,7 @@ spacebars-compiler@1.0.2
 spacebars@1.0.2
 spiderable@1.0.3
 standard-app-packages@1.0.2
+stevezhu:lodash@0.2.0
 stylus@1.0.4
 templating@1.0.7
 tracker@1.0.2
