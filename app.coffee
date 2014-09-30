@@ -1,5 +1,5 @@
+lodash.mixin(_.str.exports())
 this._ = lodash
-_.mixin(_.str.exports());
 Logger.setLevel('info')
 @Log = new Logger("ChuckDemos")
 chuckLog = new Logger("ChucKJS")
