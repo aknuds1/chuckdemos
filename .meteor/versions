@@ -7,12 +7,10 @@ blaze@2.0.1
 boilerplate-generator@1.0.0
 callback-hook@1.0.0
 check@1.0.1
-chuckjs@0.0.0
 coffeescript@1.0.3
 ctl-helper@1.0.3
 ctl@1.0.1
 ddp@1.0.9
-define@0.0.0
 deps@1.0.4
 ejson@1.0.3
 fastclick@1.0.0
@@ -32,7 +30,6 @@ jag:pince@0.0.5
 jquery@1.0.0
 json@1.0.0
 livedata@1.0.10
-lodash@0.0.0
 logging@1.0.3
 manuelschoebel:ms-seo@0.3.0
 meteor-platform@1.1.1
@@ -45,7 +42,6 @@ natestrauser:font-awesome@4.2.0
 observe-sequence@1.0.2
 ordered-dict@1.0.0
 pinglamb:bootstrap3@3.2.1
-q@0.0.0
 random@1.0.0
 reactive-dict@1.0.3
 reactive-var@1.0.2
@@ -62,7 +58,6 @@ stylus@1.0.4
 templating@1.0.7
 tracker@1.0.2
 ui@1.0.3
-underscore-string-latest@0.0.0
 underscore@1.0.0
 url@1.0.0
 webapp-hashing@1.0.0

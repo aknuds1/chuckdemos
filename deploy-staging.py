@@ -2,6 +2,7 @@
 import subprocess
 import os.path
 
+
 dpath = os.path.dirname(__file__)
 if dpath:
   os.chdir(dpath)
@@ -15,8 +16,7 @@ try:
 Disallow: /
 """)
 
-  subprocess.check_call(['mrt', 'install'])
-  subprocess.check_call(['meteor', 'deploy', 'chuckdemos.meteor.com'])
+  subprocess.check_call(['meteor', 'deploy', '--debug', 'chuckdemos.meteor.com'])
 finally:
   if robots is not None:
     os.remove(robots.name)

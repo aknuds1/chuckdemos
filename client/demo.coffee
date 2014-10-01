@@ -11,39 +11,31 @@ Template.demo.helpers(
     demo? && demo.hasSound
 )
 
-Chuck = require("chuck").Chuck
-window.Chuck = chuck = new Chuck()
-
 Template.demo.events(
   "click #execute-chuck": ->
     executeChuck = ->
-      if !Session.get("chuckExecuting")
-        @Log.debug("Starting ChucK execution")
-        Session.set("chuckExecuting", true)
-        chuck.execute(code, args)
-        .done(->
-          Session.set("chuckExecuting", false)
-          @Log.debug("ChucK execution finished")
-        , ->
-          Session.set("chuckExecuting", false)
-          @Log.debug("ChucK execution failed")
-        )
-      else
-        @Log.debug("Stopping ChucK execution")
-        Session.set("chuckExecuting", false)
-        chuck.stop()
-        .done(->
-          @Log.debug("ChucK stopped successfully")
-        )
-      return
+      @Log.debug("Starting ChucK execution")
+      Session.set("chuckExecuting", true)
+      # TODO: Pass args (pseudo commandline arguments) to ChucK
+      # TODO: Make ChucK execution asynchronous, so that it can be e.g. stopped
+      Module.ccall('executeCode', null, ['string', 'string'],
+        ['Demo', code])
+      Session.set("chuckExecuting", false)
+      @Log.debug("ChucK execution finished")
 
     {code, args} = getDemo()
-    if chuck.isExecuting()
-      chuck.stop()
-      .done(->
-        executeChuck()
-      )
-    else
+#    if chuck.isExecuting()
+#      chuck.stop()
+#      .done(->
+#        executeChuck()
+#      )
+#    else
+    if !Session.get("chuckExecuting")
       executeChuck()
+    else
+      @Log.debug("Stopping ChucK execution")
+      Session.set("chuckExecuting", false)
+      chuck.stop()
+      @Log.debug("ChucK stopped successfully")
     return
 )
