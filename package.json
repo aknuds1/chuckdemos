@@ -1,0 +1,25 @@
+{
+  "name": "chuckdemos",
+  "version": "0.0.0",
+  "description": "Demos of the ChucK programming language",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aknuds1/chuckdemos.git"
+  },
+  "keywords": [
+    "chuck"
+  ],
+  "author": "Arve Knudsen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aknuds1/chuckdemos/issues"
+  },
+  "homepage": "https://github.com/aknuds1/chuckdemos",
+  "dependencies": {
+    "hapi": "^6.9.0"
+  }
+}
