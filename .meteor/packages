@@ -7,7 +7,6 @@ standard-app-packages
 insecure
 coffeescript
 stylus
-chuckjs
 spiderable
 iron:router
 pinglamb:bootstrap3
