@@ -24,6 +24,11 @@
     "good-console": "^2.0.1",
     "handlebars": "^2.0.0",
     "hapi": "^6.9.0",
-    "react": "^0.11.2"
+    "node-sass": "^1.2.2",
+    "react": "^0.11.2",
+    "wiredep": "^2.1.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10"
   }
 }
