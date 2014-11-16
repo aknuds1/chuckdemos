@@ -20,6 +20,10 @@
   },
   "homepage": "https://github.com/aknuds1/chuckdemos",
   "dependencies": {
-    "hapi": "^6.9.0"
+    "good": "^4.0.0",
+    "good-console": "^2.0.1",
+    "handlebars": "^2.0.0",
+    "hapi": "^6.9.0",
+    "react": "^0.11.2"
   }
 }

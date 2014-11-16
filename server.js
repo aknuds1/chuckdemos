@@ -1,21 +1,49 @@
 var Hapi = require('hapi')
-var server = new Hapi.Server(3000)
+var Path = require('path')
+var server = new Hapi.Server(3000, {
+  views: {
+    engines: {
+      html: require('handlebars')
+    },
+    path: Path.join(__dirname, 'views')
+  }
+})
 
 server.route({
   method: 'GET',
   path: '/',
-  handler: function (request, reply) {
-    reply('Helluuuu')
-  }
-})
-server.route({
-  method: 'GET',
-  path: '/{name}',
-  handler: function (request, reply) {
-    reply('Helluuuu ' + encodeURIComponent(request.params.name))
+  handler: {
+    view: 'index',
   }
 })
 
-server.start(function () {
-  console.log('Server running at', server.info.url)
+server.pack.register({
+  plugin: require('good'),
+  options: {
+    reporters: [
+      {
+        reporter: require('good-console'),
+        args: [{log: '*', request: '*'}],
+      },
+      // {
+      //   reporter: require('good-http'),
+      //   args: ['http://prod.logs:3000', { error: '*' } , {
+      //       threshold: 20,
+      //       wreck: {
+      //           headers: { 'x-api-key' : 12345 }
+      //       }
+      //   }]
+      // },
+    ],
+  }
+}, function (err) {
+  if (err) {
+    console.log(err)
+    return
+  }
+
+  server.start(function () {
+    console.log('Started')
+    server.log(['debug'], 'Server running at ' + server.info.url)
+  })
 })
