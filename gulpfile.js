@@ -20,7 +20,7 @@ gulp.task('default', function () {
         ]
      }))
     .pipe(gulp.dest('./public/css'))
-  var jsxFiles = gulp.src('./jsx/**/*.js')
+  var jsxFiles = gulp.src(['./jsx/about.js', './jsx/home.js', './jsx/app.js'])
     .pipe(react())
     .pipe(gulp.dest('./public/js'))
   var bowerJs = gulp.src(bowerFiles(), {read: false})

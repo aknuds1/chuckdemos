@@ -1,3 +1,9 @@
+var Route = ReactRouter.Route;
+var Routes = ReactRouter.Routes;
+var NotFoundRoute = ReactRouter.NotFoundRoute;
+var DefaultRoute = ReactRouter.DefaultRoute;
+var Link = ReactRouter.Link;
+
 var App = React.createClass({
     render: function () {
       return (
@@ -5,7 +11,7 @@ var App = React.createClass({
           <header>
             <ul>
               <li><Link to="app">Home</Link></li>
-              <li><Link to="about">Inbox</Link></li>
+              <li><Link to="about">About</Link></li>
             </ul>
           </header>
 
@@ -23,7 +29,7 @@ var routes = (
     </Route>
   </Routes>
 )
-React.renderComponent(routes, document.body)
+React.render(routes, document.body)
 
 // React.render(
 //   <div class="jumbotron no-btm-margin">
