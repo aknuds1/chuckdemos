@@ -3,9 +3,10 @@ var Path = require('path')
 var server = new Hapi.Server(3000, {
   views: {
     engines: {
-      html: require('handlebars')
+      html: require('handlebars'),
     },
-    path: Path.join(__dirname, 'views')
+    isCached: process.env.NODE_ENV === 'production',
+    path: Path.join(__dirname, 'public/html')
   }
 })
 
@@ -14,6 +15,15 @@ server.route({
   path: '/',
   handler: {
     view: 'index',
+  },
+})
+server.route({
+  method: 'GET',
+  path: '/jsx/{param*}',
+  handler: {
+    directory: {
+      path: 'jsx',
+    },
   },
 })
 server.route({

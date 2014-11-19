@@ -23,5 +23,5 @@ gulp.task('default', function () {
   gulp.src('./views/index.html')
     .pipe(inject(css))
     .pipe(inject(bowerJs), {name: 'bower'})
-    .pipe(gulp.dest('./views'))
+    .pipe(gulp.dest('./public/html'))
 })

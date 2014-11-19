@@ -24,14 +24,18 @@
   "dependencies": {
     "bootstrap-sass-official": "~3.3.1",
     "lodash": "~2.4.1",
-    "underscore.string": "~2.4.0"
+    "underscore.string": "~2.4.0",
+    "react": "~0.12.1"
   },
   "overrides": {
     "bootstrap-sass-official": {
-        "ignore": "true"
+      "ignore": "true"
     },
     "jquery": {
-        "ignore": "true"
+      "ignore": "true"
+    },
+    "react": {
+      "main": ["react.js", "JSXTransformer.js"]
     }
   }
 }
