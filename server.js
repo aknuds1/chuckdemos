@@ -14,7 +14,16 @@ server.route({
   path: '/',
   handler: {
     view: 'index',
-  }
+  },
+})
+server.route({
+  method: 'GET',
+  path: '/public/{param*}',
+  handler: {
+    directory: {
+      path: 'public',
+    },
+  },
 })
 
 server.pack.register({

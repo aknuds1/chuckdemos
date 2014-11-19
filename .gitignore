@@ -6,3 +6,4 @@ node_modules/
 .demeteorized/
 *.log
 bower_components/
+public/

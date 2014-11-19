@@ -1,8 +1,24 @@
 var gulp = require('gulp')
-var wiredep = require('wiredep').stream
+var inject = require('gulp-inject')
+var sass = require('gulp-sass')
+var path = require('path')
+var bower = require('gulp-bower')
+
+var bowerDir = './bower_components' 
+
+gulp.task('bower', function () {
+  return bower()
+})
 
 gulp.task('default', function () {
+  var css = gulp.src('./stylesheets/*.scss')
+    .pipe(sass({
+        includePaths: [
+          bowerDir + '/bootstrap-sass-official/assets/stylesheets',
+        ]
+     }))
+    .pipe(gulp.dest('./public'))
   gulp.src('./views/index.html')
-    .pipe(wiredep())
-    .pipe(gulp.dest('./dest'))
+    .pipe(inject(css))
+    .pipe(gulp.dest('./views'))
 })
