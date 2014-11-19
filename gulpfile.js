@@ -4,7 +4,7 @@ var sass = require('gulp-sass')
 var path = require('path')
 var bower = require('gulp-bower')
 var bowerFiles = require('main-bower-files')
-var jsx = require('gulp-jsx')
+var react = require('gulp-react')
 
 var bowerDir = './bower_components/' 
 
@@ -21,7 +21,7 @@ gulp.task('default', function () {
      }))
     .pipe(gulp.dest('./public/css'))
   var jsxFiles = gulp.src('./jsx/**/*.js')
-    .pipe(jsx())
+    .pipe(react())
     .pipe(gulp.dest('./public/js'))
   var bowerJs = gulp.src(bowerFiles(), {read: false})
   gulp.src('./views/index.html')
