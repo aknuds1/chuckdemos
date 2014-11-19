@@ -25,6 +25,15 @@ server.route({
     },
   },
 })
+server.route({
+  method: 'GET',
+  path: '/bower_components/{param*}',
+  handler: {
+    directory: {
+      path: 'bower_components',
+    },
+  },
+})
 
 server.pack.register({
   plugin: require('good'),
