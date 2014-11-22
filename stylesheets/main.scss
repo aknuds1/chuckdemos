@@ -1,1 +1,25 @@
 @import 'bootstrap';
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  i.fa {
+    color: #333;
+  }
+}
+
+.footer-content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#social {
+  i.fa {
+    margin-left: 0.15em;
+    margin-right: 0.15em;
+  }
+}

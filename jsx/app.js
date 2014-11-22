@@ -27,6 +27,20 @@ var navItems = [
     ],
   },
 ]
+var socialLinks = [
+  {
+    url: 'https://twitter.com/chuckdemos',
+    icon: 'twitter',
+  },
+  {
+    url: 'http://github.com/aknuds1/chuck',
+    icon: 'github',
+  },
+  {
+    url: 'https://groups.google.com/forum/#!forum/chuckjs',
+    icon: 'envelope',
+  },
+]
 
 var SoundIcon = React.createClass({
   render: function () {
@@ -67,6 +81,12 @@ var App = React.createClass({
         }
       })
 
+      var socialLinkElements = _.map(socialLinks, function (socialLink) {
+        return (
+          <a href={socialLink.url} target="_blank"><i className={'fa fa-3x fa-' + socialLink.icon}></i></a>
+        )
+      })
+
       return (
         <div>
           <div className="navbar navbar-inverse navbar-fixed-top">
@@ -89,11 +109,7 @@ var App = React.createClass({
             <div className="footer-content"><a href="https://github.com/spencersalazar/chuck/tree/master/src/examples">Official</a
                 >&nbsp;demos ported: {officialDemosPorted}/{officialDemosTotal}</div>
             <div id="social" className="footer-content">
-              {/*
-              {{#each socialLinks}}
-              <a href="{{url}}" target="_blank"><i className="fa fa-{{icon}}"></i></a>
-              {{/each}}
-              */}
+              {socialLinkElements}
             </div>
             <div className="footer-content">
               Want to help?&nbsp;<a href="https://github.com/aknuds1/chuck" target="_blank">ChucKJS</a>&nbsp;needs contributors
