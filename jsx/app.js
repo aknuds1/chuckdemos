@@ -9,8 +9,8 @@ var officialDemosPorted = 1
 var officialDemosTotal = 2
 var navItems = [
   {
-    url: 'http://example.com',
-    text: 'Example',
+    url: '/',
+    text: 'Home',
     isDropDown: false,
   },
   {
