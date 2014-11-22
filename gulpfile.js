@@ -27,9 +27,8 @@ function defaultBuild() {
     .pipe(react())
     .pipe(gulp.dest('./public/js'))
   var bowerJs = gulp.src(bowerFiles(), {read: false})
-  gulp.src(htmlSrcSpec)
+  return gulp.src(htmlSrcSpec)
     .pipe(plumber())
-    // Does not produce output - presumably because watch source hasn't ended its stream
     .pipe(inject(css))
     .pipe(inject(bowerJs, {name: 'bower'}))
     .pipe(inject(jsxFiles, {name: 'jsx'}))
@@ -44,6 +43,6 @@ gulp.task('default', defaultBuild)
 
 gulp.task('watch', function () {
   watch(sassSrcSpec.concat(jsxSrcSpec).concat(htmlSrcSpec), function () {
-    defaultBuild()
+    return defaultBuild()
   })
 })
