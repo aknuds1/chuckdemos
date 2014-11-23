@@ -56,7 +56,10 @@ var socialLinks = [
 
 var SoundIcon = React.createClass({
   render: function () {
-    return (<span></span>)
+    return (
+      <i className="fa fa-headphones slightly-transparent" data-toggle="tooltip" data-placement="right"
+      title="" data-original-title="Generates sound"></i>
+    )
   },
 })
 
@@ -76,11 +79,10 @@ var App = React.createClass({
           )
         } else {
           var dropdownElements = _.map(navItem.dropDownItems, function (dropDownItem) {
-            var soundIcon = dropDownItem.hasSound ? (<SoundIcon/>) : ''
+            var soundIcon = dropDownItem.hasSound ? (<span>&nbsp;<SoundIcon/></span>) : ''
             return (
               <MenuItem>
-                  {dropDownItem.text}
-                  {soundIcon}
+                  {dropDownItem.text}{soundIcon}
               </MenuItem>
             )
           })
