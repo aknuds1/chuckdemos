@@ -60,7 +60,6 @@ var App = React.createClass({
     render: function () {
       var activeDescriptor = this.props.activeRouteHandler()
       var routeName = activeDescriptor.props.name
-      console.log('Current route:', routeName)
 
       var navElements = _.map(navItems, function (navItem)  {
         var props = {}
