@@ -1,3 +1,5 @@
+'use strict'
+
 var Route = ReactRouter.Route
 var NotFoundRoute = ReactRouter.NotFoundRoute
 var DefaultRoute = ReactRouter.DefaultRoute
@@ -8,6 +10,7 @@ var Nav = ReactBootstrap.Nav
 var NavItem = ReactBootstrap.NavItem
 var DropdownButton = ReactBootstrap.DropdownButton
 var MenuItem = ReactBootstrap.MenuItem
+var Home, About, Demo
 
 // TODO
 var officialDemosPorted = 1
@@ -150,6 +153,6 @@ var routes = (
     <Route name="about" handler={About}/>
   </Route>
 )
-ReactRouter.run(routes, function (Handler) {
+ReactRouter.run(routes, ReactRouter.HistoryLocation, function (Handler) {
   React.render(<Handler/>, document.body)
 })

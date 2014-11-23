@@ -1,3 +1,5 @@
+'use strict'
+
 var About = React.createClass({
   render: function() {
     return (

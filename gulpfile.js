@@ -7,6 +7,7 @@ var bowerFiles = require('main-bower-files')
 var react = require('gulp-react')
 var watch = require('gulp-watch')
 var plumber = require('gulp-plumber')
+var jshint = require('gulp-jshint')
 
 var bowerDir = './bower_components/' 
 var sassSrcSpec = ['./stylesheets/*.scss']
@@ -22,9 +23,14 @@ function defaultBuild() {
         ]
      }))
     .pipe(gulp.dest('./public/css'))
-  var jsxFiles = gulp.src(jsxSrcSpec)
+  var jsxFilesSrc = gulp.src(jsxSrcSpec)
     .pipe(plumber())
     .pipe(react())
+  jsxFilesSrc
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+
+  var jsxFiles = jsxFilesSrc
     .pipe(gulp.dest('./public/js'))
   var bowerJs = gulp.src(bowerFiles(), {read: false})
   return gulp.src(htmlSrcSpec)
