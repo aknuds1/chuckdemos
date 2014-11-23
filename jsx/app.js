@@ -3,6 +3,11 @@ var Routes = ReactRouter.Routes
 var NotFoundRoute = ReactRouter.NotFoundRoute
 var DefaultRoute = ReactRouter.DefaultRoute
 var Link = ReactRouter.Link
+var Navbar = ReactBootstrap.Navbar
+var Nav = ReactBootstrap.Nav
+var NavItem = ReactBootstrap.NavItem
+var DropdownButton = ReactBootstrap.DropdownButton
+var MenuItem = ReactBootstrap.MenuItem
 
 // TODO
 var officialDemosPorted = 1
@@ -15,10 +20,9 @@ var navItems = [
     isDropDown: false,
   },
   {
-    url: 'http://examples.com',
-    text: 'Examples',
+    text: 'Demos',
     isDropDown: true,
-    routeName: 'examples',
+    routeName: 'demos',
     dropDownItems: [
       {
         hasSound: true,
@@ -68,30 +72,23 @@ var App = React.createClass({
         }
         if (!navItem.isDropDown) {
           return (
-            <li {...props}>
-              <a href={navItem.url}>{navItem.text}</a>
-            </li>
+            <NavItem {...props} href={navItem.url}>{navItem.text}</NavItem>
           )
         } else {
-          var dropDownElements = _.map(navItem.dropDownItems, function (dropDownItem) {
+          var dropdownElements = _.map(navItem.dropDownItems, function (dropDownItem) {
             var soundIcon = dropDownItem.hasSound ? (<SoundIcon/>) : ''
             return (
-              <li role="presentation">
-                <a role="menuitem" tabIndex="-1" href={dropDownItem.url}>
+              <MenuItem>
                   {dropDownItem.text}
                   {soundIcon}
-                </a>
-              </li>
+              </MenuItem>
             )
           })
 
           return (
-            <li className="dropdown">
-              <a href="#" className="dropdown-toggle" data-toggle="dropdown">{navItem.text}</a>
-              <ul className="dropdown-menu" role="menu">
-                {dropDownElements}
-              </ul>
-            </li>
+            <DropdownButton title={navItem.text}>
+              {dropdownElements}
+            </DropdownButton>
           )
         }
       })
@@ -102,20 +99,17 @@ var App = React.createClass({
         )
       })
 
+      var brand = (
+        <a href="/">ChucK Demos</a>
+      )
+
       return (
         <div>
-          <div className="navbar navbar-inverse navbar-fixed-top">
-            <div className="container">
-              <div className="navbar-header">
-                <a className="navbar-brand" href="/">ChucK Demos</a>
-              </div>
-              <div className="navbar-collapse collapse">
-                <ul className="nav navbar-nav">
-                  {navElements}
-                </ul>
-              </div>
-            </div>
-          </div>
+          <Navbar fixedTop={true} inverse={true} brand={brand}>
+            <Nav>
+              {navElements}
+            </Nav>
+          </Navbar>
           <div className="container" role="main">
             <this.props.activeRouteHandler/>
           </div>
