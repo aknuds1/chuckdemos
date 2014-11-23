@@ -99,13 +99,9 @@ var App = React.createClass({
         )
       })
 
-      var brand = (
-        <a href="/">ChucK Demos</a>
-      )
-
       return (
         <div>
-          <Navbar fixedTop={true} inverse={true} brand={brand}>
+          <Navbar fixedTop={true} inverse={true} brand={(<a href="/">ChucK Demos</a>)}>
             <Nav>
               {navElements}
             </Nav>
