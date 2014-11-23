@@ -10,7 +10,7 @@ var plumber = require('gulp-plumber')
 
 var bowerDir = './bower_components/' 
 var sassSrcSpec = ['./stylesheets/*.scss']
-var jsxSrcSpec = ['./jsx/about.js', './jsx/home.js', './jsx/app.js']
+var jsxSrcSpec = ['./jsx/about.js', './jsx/home.js', './jsx/demo.js', './jsx/app.js']
 var htmlSrcSpec = ['./views/index.html']
 
 function defaultBuild() {

@@ -1,8 +1,8 @@
 var Route = ReactRouter.Route
-var Routes = ReactRouter.Routes
 var NotFoundRoute = ReactRouter.NotFoundRoute
 var DefaultRoute = ReactRouter.DefaultRoute
 var Link = ReactRouter.Link
+var RouteHandler = ReactRouter.RouteHandler
 var Navbar = ReactBootstrap.Navbar
 var Nav = ReactBootstrap.Nav
 var NavItem = ReactBootstrap.NavItem
@@ -64,84 +64,92 @@ var SoundIcon = React.createClass({
 })
 
 var App = React.createClass({
-    render: function () {
-      var activeDescriptor = this.props.activeRouteHandler()
-      var routeName = activeDescriptor.props.name
+  mixins: [ReactRouter.State,],
 
-      var navElements = _.map(navItems, function (navItem)  {
-        var props = {}
-        if (navItem.routeName === routeName) {
-          props.className = 'active'
-        }
-        if (!navItem.isDropDown) {
-          return (
-            <NavItem {...props} href={navItem.url}>{navItem.text}</NavItem>
-          )
-        } else {
-          var dropdownElements = _.map(navItem.dropDownItems, function (dropDownItem) {
-            var soundIcon = dropDownItem.hasSound ? (<span>&nbsp;<SoundIcon/></span>) : ''
-            return (
-              <MenuItem>
-                  {dropDownItem.text}{soundIcon}
-              </MenuItem>
-            )
-          })
+  render: function () {
+    // TODO: Fix
+    var routeName = null
 
-          return (
-            <DropdownButton title={navItem.text}>
-              {dropdownElements}
-            </DropdownButton>
-          )
-        }
-      })
-
-      var socialLinkElements = _.map(socialLinks, function (socialLink) {
+    var navElements = _.map(navItems, function (navItem)  {
+      var props = {}
+      if (navItem.routeName === routeName) {
+        props.className = 'active'
+      }
+      if (!navItem.isDropDown) {
         return (
-          <a href={socialLink.url} target="_blank"><i className={'fa fa-3x fa-' + socialLink.icon}></i></a>
+          <NavItem {...props} href={navItem.url}>{navItem.text}</NavItem>
         )
-      })
+      } else {
+        var dropdownElements = _.map(navItem.dropDownItems, function (dropDownItem) {
+          var soundIcon = dropDownItem.hasSound ? (<span>&nbsp;<SoundIcon/></span>) : ''
+          return (
+            <MenuItem>
+                {dropDownItem.text}{soundIcon}
+            </MenuItem>
+          )
+        })
 
+        return (
+          <DropdownButton title={navItem.text}>
+            {dropdownElements}
+          </DropdownButton>
+        )
+      }
+    })
+
+    var socialLinkElements = _.map(socialLinks, function (socialLink) {
       return (
-        <div>
-          <Navbar fixedTop={true} inverse={true} brand={(<a href="/">ChucK Demos</a>)}>
-            <Nav>
-              {navElements}
-            </Nav>
-          </Navbar>
-          <div className="container" role="main">
-            <this.props.activeRouteHandler/>
+        <a href={socialLink.url} target="_blank"><i className={'fa fa-3x fa-' + socialLink.icon}></i></a>
+      )
+    })
+
+    return (
+      <div>
+        <Navbar fixedTop={true} inverse={true} brand={(<a href="/">ChucK Demos</a>)}>
+          <Nav>
+            {navElements}
+          </Nav>
+        </Navbar>
+        <div className="container" role="main">
+          <RouteHandler/>
+        </div>
+        <div id="footer">
+          <hr className="no-top-margin"/>
+          <div className="footer-content">
+            <a href="https://github.com/spencersalazar/chuck/tree/master/src/examples">Official</a>
+            &nbsp;demos ported: {officialDemosPorted}/{officialDemosTotal}
           </div>
-          <div id="footer">
-            <hr className="no-top-margin"/>
-            <div className="footer-content">
-              <a href="https://github.com/spencersalazar/chuck/tree/master/src/examples">Official</a>
-              &nbsp;demos ported: {officialDemosPorted}/{officialDemosTotal}
-            </div>
-            <div id="social" className="footer-content">
-              {socialLinkElements}
-            </div>
-            <div className="footer-content">
-              Want to help?&nbsp;<a href="https://github.com/aknuds1/chuck" target="_blank">ChucKJS</a>
-              &nbsp;needs contributors
-            </div>
-            <div id="copyright" className="footer-content">
-              <span className="text-muted">© 2014 Arve Knudsen</span>&nbsp;
-              <a href="https://www.gittip.com/Arve%20Knudsen/" target="_blank">
-                <img src="http://img.shields.io/gittip/Arve%20Knudsen.png"/>
-              </a>
-            </div>
+          <div id="social" className="footer-content">
+            {socialLinkElements}
+          </div>
+          <div className="footer-content">
+            Want to help?&nbsp;<a href="https://github.com/aknuds1/chuck" target="_blank">ChucKJS</a>
+            &nbsp;needs contributors
+          </div>
+          <div id="copyright" className="footer-content">
+            <span className="text-muted">© 2014 Arve Knudsen</span>&nbsp;
+            <a href="https://www.gittip.com/Arve%20Knudsen/" target="_blank">
+              <img src="http://img.shields.io/gittip/Arve%20Knudsen.png"/>
+            </a>
           </div>
         </div>
-      )
-    }
+      </div>
+    )
+  }
 })
 
+var demos = [
+  {
+    name: 'ADSR',
+    path: 'basic',
+  },
+]
 var routes = (
-  <Routes location="history">
-    <Route name="app" path="/" handler={App}>
-      <Route name="about" handler={About}/>
-      <DefaultRoute name="home" handler={Home}/>
-    </Route>
-  </Routes>
+  <Route path="/" handler={App}>
+    <DefaultRoute name="home" handler={Home}/>
+    <Route name="about" handler={About}/>
+  </Route>
 )
-React.render(routes, document.body)
+ReactRouter.run(routes, function (Handler) {
+  React.render(<Handler/>, document.body)
+})
