@@ -60,6 +60,7 @@ var App = React.createClass({
     render: function () {
       var activeDescriptor = this.props.activeRouteHandler()
       var routeName = activeDescriptor.props.name
+      console.log('Current route:', routeName)
 
       var navElements = _.map(navItems, function (navItem)  {
         var props = {}
@@ -148,7 +149,7 @@ var routes = (
   <Routes location="history">
     <Route name="app" path="/" handler={App}>
       <Route name="about" handler={About}/>
-      <DefaultRoute handler={Home}/>
+      <DefaultRoute name="home" handler={Home}/>
     </Route>
   </Routes>
 )
