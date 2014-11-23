@@ -1,0 +1,12 @@
+{
+  "globalstrict": true,
+  "asi": true,
+  "globals": {
+    "React": false,
+    "ReactRouter": false,
+    "ReactBootstrap": false,
+    "_": false,
+    "console": false,
+    "document": false
+  }
+}

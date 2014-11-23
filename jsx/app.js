@@ -15,6 +15,14 @@ var Home, About, Demo
 // TODO
 var officialDemosPorted = 1
 var officialDemosTotal = 2
+var demos = [
+  {
+    id: 'basic/adsr',
+    name: 'ADSR',
+    code: 'ADSR Demo etc.',
+    hasSound: true,
+  },
+]
 var navItems = [
   {
     url: '/',
@@ -26,14 +34,13 @@ var navItems = [
     text: 'Demos',
     isDropDown: true,
     routeName: 'demos',
-    dropDownItems: [
-      {
-        hasSound: true,
-        attrs: [],
-        url: 'http://example.com/1',
-        text: '1',
-      },
-    ],
+    dropdownItems: _.map(demos, function (demo) {
+      return {
+        hasSound: demo.hasSound,
+        path: '/demos/' + demo.id,
+        text: demo.name,
+      }
+    }),
   },
   {
     url: '/about',
@@ -70,8 +77,7 @@ var App = React.createClass({
   mixins: [ReactRouter.State,],
 
   render: function () {
-    // TODO: Fix
-    var routeName = null
+    var routeName = this.getRoutes()[1].name
 
     var navElements = _.map(navItems, function (navItem)  {
       var props = {}
@@ -83,17 +89,17 @@ var App = React.createClass({
           <NavItem {...props} href={navItem.url}>{navItem.text}</NavItem>
         )
       } else {
-        var dropdownElements = _.map(navItem.dropDownItems, function (dropDownItem) {
-          var soundIcon = dropDownItem.hasSound ? (<span>&nbsp;<SoundIcon/></span>) : ''
+        var dropdownElements = _.map(navItem.dropdownItems, function (dropdownItem) {
+          var soundIcon = dropdownItem.hasSound ? (<span>&nbsp;<SoundIcon/></span>) : ''
           return (
             <MenuItem>
-                {dropDownItem.text}{soundIcon}
+                <a href={dropdownItem.path}>{dropdownItem.text}{soundIcon}</a>
             </MenuItem>
           )
         })
 
         return (
-          <DropdownButton title={navItem.text}>
+          <DropdownButton {...props} title={navItem.text}>
             {dropdownElements}
           </DropdownButton>
         )
@@ -141,16 +147,12 @@ var App = React.createClass({
   }
 })
 
-var demos = [
-  {
-    name: 'ADSR',
-    path: 'basic',
-  },
-]
+
 var routes = (
   <Route path="/" handler={App}>
     <DefaultRoute name="home" handler={Home}/>
     <Route name="about" handler={About}/>
+    <Route name="demos" path="demos/*" handler={Demo}/>
   </Route>
 )
 ReactRouter.run(routes, ReactRouter.HistoryLocation, function (Handler) {
