@@ -1,0 +1,3 @@
+[submodule "chuck"]
+	path = chuck
+	url = git@github.com:aknuds1/chuck.git
