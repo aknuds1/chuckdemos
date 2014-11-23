@@ -11,12 +11,14 @@ var navItems = [
   {
     url: '/',
     text: 'Home',
+    routeName: 'home',
     isDropDown: false,
   },
   {
     url: 'http://examples.com',
     text: 'Examples',
     isDropDown: true,
+    routeName: 'examples',
     dropDownItems: [
       {
         hasSound: true,
@@ -25,6 +27,12 @@ var navItems = [
         text: '1',
       },
     ],
+  },
+  {
+    url: '/about',
+    text: 'About',
+    routeName: 'about',
+    isDropDown: false,
   },
 ]
 var socialLinks = [
@@ -50,10 +58,17 @@ var SoundIcon = React.createClass({
 
 var App = React.createClass({
     render: function () {
-      navElements = _.map(navItems, function (navItem)  {
+      var activeDescriptor = this.props.activeRouteHandler()
+      var routeName = activeDescriptor.props.name
+
+      var navElements = _.map(navItems, function (navItem)  {
+        var props = {}
+        if (navItem.routeName === routeName) {
+          props.className = 'active'
+        }
         if (!navItem.isDropDown) {
           return (
-            <li>
+            <li {...props}>
               <a href={navItem.url}>{navItem.text}</a>
             </li>
           )
@@ -62,7 +77,7 @@ var App = React.createClass({
             var soundIcon = dropDownItem.hasSound ? (<SoundIcon/>) : ''
             return (
               <li role="presentation">
-                <a role="menuitem" tabindex="-1" href={dropDownItem.url}>
+                <a role="menuitem" tabIndex="-1" href={dropDownItem.url}>
                   {dropDownItem.text}
                   {soundIcon}
                 </a>
@@ -106,13 +121,16 @@ var App = React.createClass({
           </div>
           <div id="footer">
             <hr className="no-top-margin"/>
-            <div className="footer-content"><a href="https://github.com/spencersalazar/chuck/tree/master/src/examples">Official</a
-                >&nbsp;demos ported: {officialDemosPorted}/{officialDemosTotal}</div>
+            <div className="footer-content">
+              <a href="https://github.com/spencersalazar/chuck/tree/master/src/examples">Official</a>
+              &nbsp;demos ported: {officialDemosPorted}/{officialDemosTotal}
+            </div>
             <div id="social" className="footer-content">
               {socialLinkElements}
             </div>
             <div className="footer-content">
-              Want to help?&nbsp;<a href="https://github.com/aknuds1/chuck" target="_blank">ChucKJS</a>&nbsp;needs contributors
+              Want to help?&nbsp;<a href="https://github.com/aknuds1/chuck" target="_blank">ChucKJS</a>
+              &nbsp;needs contributors
             </div>
             <div id="copyright" className="footer-content">
               <span className="text-muted">© 2014 Arve Knudsen</span>&nbsp;

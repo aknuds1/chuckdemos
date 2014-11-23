@@ -2,8 +2,32 @@ var About = React.createClass({
   render: function() {
     return (
       <div>
-        <h1>About ChucK Demos!</h1>
+        <a href="https://github.com/aknuds1/chuck" target="_blank">
+          <img className="github-fork"
+               src="https://github-camo.global.ssl.fastly.net/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
+               alt="Fork me on GitHub"
+               data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"/>
+        </a>
+
+        <div className="jumbotron no-btm-margin">
+          <h1>About ChucK Demos</h1>
+
+          <p>The main purpose of the ChucK Demos site is to provide a repository of
+            <a href="http://chuck.cs.princeton.edu/" target="_blank">ChucK</a> demo programs that can also be heard right
+            inside the browser. Its secondary purpose is to showcase the
+            <a href="https://github.com/aknuds1/chuck" target="_blank">ChucKJS</a> JavaScript library, which
+            is made by the site's author.
+          </p>
+
+          <p>Technology-wise, the sound is completely generated (by ChucKJS) within your own browser, thanks to the nascent
+          <a href="https://developer.mozilla.org/en-US/docs/Web_Audio_API">Web Audio API</a> standard. This carries with it
+          the implication that you need a modern browser
+            <a href="https://developer.mozilla.org/en-US/docs/Web_Audio_API#Browser_compatibility"> that supports the
+              technology</a>, to be able to play back these demos. Since the sound is synthesized within your browser,
+            you must also bear in mind that the performance will depend on your computer's CPU.
+          </p>
+        </div>
       </div>
-    );
+    )
   }
-});
+})
