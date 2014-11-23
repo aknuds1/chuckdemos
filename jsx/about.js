@@ -12,19 +12,19 @@ var About = React.createClass({
         <div className="jumbotron no-btm-margin">
           <h1>About ChucK Demos</h1>
 
-          <p>The main purpose of the ChucK Demos site is to provide a repository of
-            <a href="http://chuck.cs.princeton.edu/" target="_blank">ChucK</a> demo programs that can also be heard right
-            inside the browser. Its secondary purpose is to showcase the
-            <a href="https://github.com/aknuds1/chuck" target="_blank">ChucKJS</a> JavaScript library, which
-            is made by the site's author.
+          <p>The main purpose of the ChucK Demos site is to provide a repository of&nbsp;
+            <a href="http://chuck.cs.princeton.edu/" target="_blank">ChucK</a>&nbsp;demo programs that can
+            also be heard right inside the browser. Its secondary purpose is to showcase the&nbsp;
+            <a href="https://github.com/aknuds1/chuck" target="_blank">ChucKJS</a>&nbsp;JavaScript library,
+            which is made by the site's author.
           </p>
 
-          <p>Technology-wise, the sound is completely generated (by ChucKJS) within your own browser, thanks to the nascent
-          <a href="https://developer.mozilla.org/en-US/docs/Web_Audio_API">Web Audio API</a> standard. This carries with it
-          the implication that you need a modern browser
-            <a href="https://developer.mozilla.org/en-US/docs/Web_Audio_API#Browser_compatibility"> that supports the
-              technology</a>, to be able to play back these demos. Since the sound is synthesized within your browser,
-            you must also bear in mind that the performance will depend on your computer's CPU.
+          <p>Technology-wise, the sound is completely generated (by ChucKJS) within your own browser, thanks
+          to the nascent&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web_Audio_API">Web Audio API</a>
+          &nbsp;standard. This carries with it the implication that you need a modern browser&nbsp;
+          <a href="https://developer.mozilla.org/en-US/docs/Web_Audio_API#Browser_compatibility">that supports the
+          technology</a>, to be able to play back these demos. Since the sound is synthesized within your browser,
+          you must also bear in mind that the performance will depend on your computer's CPU.
           </p>
         </div>
       </div>

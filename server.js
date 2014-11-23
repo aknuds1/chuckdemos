@@ -12,7 +12,7 @@ var server = new Hapi.Server(3000, {
 
 server.route({
   method: 'GET',
-  path: '/',
+  path: '/{p*}',
   handler: {
     view: 'index',
   },
