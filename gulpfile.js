@@ -10,8 +10,14 @@ var plumber = require('gulp-plumber')
 var jshint = require('gulp-jshint')
 
 var bowerDir = './bower_components/' 
-var sassSrcSpec = ['./stylesheets/*.scss']
-var jsxSrcSpec = ['./jsx/about.js', './jsx/home.js', './jsx/demo.js', './jsx/app.js']
+var sassSrcSpec = ['./styles/*.scss']
+var jsxSrcSpec = [
+  './jsx/components.js',
+  './jsx/about.js',
+  './jsx/home.js',
+  './jsx/demo.js',
+  './jsx/app.js'
+]
 var htmlSrcSpec = ['./views/index.html']
 
 function defaultBuild() {

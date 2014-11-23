@@ -10,7 +10,7 @@ var Nav = ReactBootstrap.Nav
 var NavItem = ReactBootstrap.NavItem
 var DropdownButton = ReactBootstrap.DropdownButton
 var MenuItem = ReactBootstrap.MenuItem
-var Home, About, Demo
+var Home, About, Demo, SoundIcon
 
 // TODO
 var officialDemosPorted = 1
@@ -19,7 +19,8 @@ var demos = [
   {
     id: 'basic/adsr',
     name: 'ADSR',
-    code: 'ADSR Demo etc.',
+    description: 'ADSR Demo etc.',
+    code: 'This and that...',
     hasSound: true,
   },
 ]
@@ -63,15 +64,6 @@ var socialLinks = [
     icon: 'envelope',
   },
 ]
-
-var SoundIcon = React.createClass({
-  render: function () {
-    return (
-      <i className="fa fa-headphones slightly-transparent" data-toggle="tooltip" data-placement="right"
-      title="" data-original-title="Generates sound"></i>
-    )
-  },
-})
 
 var App = React.createClass({
   mixins: [ReactRouter.State,],
