@@ -71,5 +71,5 @@ gulp.task('watch', function () {
 gulp.task('chuck', function () {
   shell.task(['cd chuck/src && make -j5 emscripten'])
   return gulp.src('./chuck/src/chuck.js*')
-    .pipe(gulp.dest('./lib/'))
+    .pipe(gulp.dest('./public/js'))
 })
