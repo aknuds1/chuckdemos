@@ -26,8 +26,8 @@ function defaultBuild() {
     .pipe(sass({
         includePaths: [
           bowerDir + 'bootstrap-sass-official/assets/stylesheets',
-        ]
-     }))
+       ]
+      }))
     .pipe(gulp.dest('./public/css'))
 
   var jsxFilesSrc = gulp.src(jsxSrcSpec)

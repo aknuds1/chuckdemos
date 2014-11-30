@@ -1,10 +1,12 @@
 {
   "name": "chuckdemos",
-  "version": "0.0.0",
+  "version": "0.0.0-3",
   "description": "Demos of the ChucK programming language",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "gulp bower default",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -37,5 +39,9 @@
     "gulp-sass": "^1.1.0",
     "gulp-watch": "^2.0.0",
     "main-bower-files": "^2.4.0"
+  },
+  "subdomain": "chuckdemos",
+  "engines": {
+    "node": "0.10.x"
   }
 }
