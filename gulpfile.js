@@ -8,7 +8,6 @@ var react = require('gulp-react')
 var watch = require('gulp-watch')
 var plumber = require('gulp-plumber')
 var jshint = require('gulp-jshint')
-var shell = require('gulp-shell')
 
 var bowerDir = './bower_components/' 
 var sassSrcSpec = ['./styles/*.scss']
