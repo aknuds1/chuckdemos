@@ -22,10 +22,10 @@
   },
   "homepage": "https://github.com/aknuds1/chuckdemos",
   "dependencies": {
+    "hapi": "^7.5.2",
     "good": "^4.0.0",
     "good-console": "^2.1.0",
     "handlebars": "^2.0.0",
-    "hapi": "^6.9.0",
     "gulp": "^3.8.10",
     "gulp-bower": "0.0.7",
     "gulp-inject": "^1.0.2",

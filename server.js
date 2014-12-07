@@ -1,13 +1,12 @@
 var Hapi = require('hapi')
 var Path = require('path')
-var server = new Hapi.Server(3000, {
-  views: {
-    engines: {
-      html: require('handlebars'),
-    },
-    isCached: process.env.NODE_ENV === 'production',
-    path: Path.join(__dirname, 'public/html')
-  }
+var server = new Hapi.Server(3000)
+server.views({
+  engines: {
+    html: require('handlebars'),
+  },
+  isCached: process.env.NODE_ENV === 'production',
+  path: Path.join(__dirname, 'public/html')
 })
 
 server.route({
