@@ -27,13 +27,13 @@ RUN curl -SLO "http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x
 	&& npm install -g npm@"$NPM_VERSION" \
 	&& npm cache clear
 
-RUN npm install --unsafe-perm -g gulp bower && npm cache clear
+RUN npm install -g gulp bower && npm cache clear
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 COPY . /usr/src/app/
-RUN npm install
+RUN npm --unsafe-perm install && npm cache clear
 
 EXPOSE 3000
 
