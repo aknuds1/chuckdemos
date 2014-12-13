@@ -1,5 +1,0 @@
-web:
-  build: .
-  command: python -m SimpleHTTPServer
-  volumes:
-    - .:/code
