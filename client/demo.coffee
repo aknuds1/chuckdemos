@@ -1,18 +1,9 @@
-getDemo = ->
-  path = Router.current().params[0]
-  demo = Demos.findOne(path: path)
-  demo
-
 Template.demo.helpers(
-  params: getDemo
   isExecuting: -> Session.get("chuckExecuting")
-  hasSound: ->
-    demo = Template.demo.params()
-    demo? && demo.hasSound
 )
 
-Chuck = require("chuck").Chuck
-window.Chuck = chuck = new Chuck()
+# Chuck = require("chuck").Chuck
+# window.Chuck = chuck = new Chuck()
 
 Template.demo.events(
   "click #execute-chuck": ->

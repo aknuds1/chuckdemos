@@ -14,7 +14,11 @@ Router.route('/about', ->
 )
 
 Router.route("/demos/:demo(.*)", ->
-  @render("demo")
+  @render("demo", {
+    data: ->
+      path = @params.demo
+      Demos.findOne(path: path)
+  })
 , {
     onBeforeAction: ->
       # Eventually stop ChucK playback
