@@ -1,0 +1,3 @@
+[submodule "packages/chuckjs"]
+	path = packages/chuckjs
+	url = git@github.com:aknuds1/meteor-chuckjs.git

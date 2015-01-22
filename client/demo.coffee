@@ -2,8 +2,8 @@ Template.demo.helpers(
   isExecuting: -> Session.get("chuckExecuting")
 )
 
-# Chuck = require("chuck").Chuck
-# window.Chuck = chuck = new Chuck()
+Chuck = require("chuck").Chuck
+window.Chuck = chuck = new Chuck()
 
 Template.demo.events(
   "click #execute-chuck": ->
@@ -28,7 +28,7 @@ Template.demo.events(
         )
       return
 
-    {code, args} = getDemo()
+    {code, args} = @
     if chuck.isExecuting()
       chuck.stop()
       .done(->
