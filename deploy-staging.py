@@ -15,7 +15,6 @@ try:
 Disallow: /
 """)
 
-  subprocess.check_call(['mrt', 'install'])
   subprocess.check_call(['meteor', 'deploy', 'chuckdemos.meteor.com'])
 finally:
   if robots is not None:
