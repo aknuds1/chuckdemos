@@ -7,11 +7,13 @@ standard-app-packages
 insecure
 coffeescript
 stylus
+spiderable
 iron:router
 pinglamb:bootstrap3
 jag:pince
 natestrauser:font-awesome
 manuelschoebel:ms-seo
-gadicohen:phantomjs
 stevezhu:lodash
-spiderable
+mrt:define
+aknudsen:chuckjs
+dfischer:phantomjs

@@ -2,20 +2,33 @@ Router.configure(
   layoutTemplate: "layout"
 )
 
-Router.map(->
-  @route("home",
-    path: "/"
-    template: "home"
-  )
+Router.route('/', ->
+  @render('home')
+,
+  {
+    name: 'home'
+  }
 )
-Router.map(->
-  @route("about",
-    path: "/about"
-  )
+Router.route('/about', ->
+  @render('about')
 )
-Router.map(->
-  @route("demo",
-    path: "/demos/:demo(*)"
+
+Router.route("/demos/:demo(.*)", ->
+  @render("demo", {
+    data: ->
+      path = @params.demo
+      Demos.findOne(path: path)
+  })
+, {
+    onBeforeAction: ->
+      # Eventually stop ChucK playback
+      if window.Chuck? && Chuck.isExecuting()
+        window.Chuck.stop()
+        # TODO: Refactor!
+        .done(-> Session.set("chuckExecuting", false))
+
+      @next()
+    ,
     onAfterAction: ->
       if !Meteor.isClient
         return
@@ -29,13 +42,5 @@ Router.map(->
         meta:
           description: demo.description
       )
-  )
-
-  Router.onBeforeAction(->
-    # Eventually stop ChucK playback
-    if window.Chuck? && Chuck.isExecuting()
-      window.Chuck.stop()
-      # TODO: Refactor!
-      .done(-> Session.set("chuckExecuting", false))
-  )
+  }
 )
