@@ -2,24 +2,21 @@ Template.demo.helpers(
   isExecuting: -> Session.get("chuckExecuting")
 )
 
-Chuck = require("chuck").Chuck
-window.Chuck = chuck = new Chuck()
-
 Template.demo.events(
   "click #execute-chuck": ->
     executeChuck = ->
       if !Session.get("chuckExecuting")
         @Log.debug("Starting ChucK execution")
         Session.set("chuckExecuting", true)
-        chuck.execute(code, args)
-        .done(->
+        try
+          Module.ccall('executeCode', null, ['string', 'string'], [name, code])
           Session.set("chuckExecuting", false)
           @Log.debug("ChucK execution finished")
-        , ->
+        catch err
           Session.set("chuckExecuting", false)
-          @Log.debug("ChucK execution failed")
-        )
+          @Log.debug("ChucK execution failed:\n#{err}")
       else
+        # TODO: Won't work until ChucK is async
         @Log.debug("Stopping ChucK execution")
         Session.set("chuckExecuting", false)
         chuck.stop()
@@ -28,13 +25,14 @@ Template.demo.events(
         )
       return
 
-    {code, args} = @
-    if chuck.isExecuting()
-      chuck.stop()
-      .done(->
-        executeChuck()
-      )
-    else
-      executeChuck()
+    {code, args, name} = @
+    executeChuck()
+    # if chuck.isExecuting()
+    #   chuck.stop()
+    #   .done(->
+    #     executeChuck()
+    #   )
+    # else
+    #   executeChuck()
     return
 )

@@ -733,36 +733,27 @@ inharm();
 """))
   Demos.insert(new Demo("contrib/tintinnabuli", "Tintinnabuli",
     "A simple demonstration of Arvo Pärt's algorithmic Tintinnabuli composition technique, made by
-    Arve Knudsen in joint collaboration with Guy Birkin and Ernst van der Loo.",
-    """NRev rl => dac.left;
-NRev rr => dac.right;
+    Arve Knudsen in collaboration with Guy Birkin.",
+    """NRev rev => dac;
 Blit m;
-m => rl;
-m => rr;
+m => rev;
 .4 => m.gain;
-.1 => rl.mix;
-.1 => rr.mix;
+.1 => rev.mix;
 
-Gain tScalerL => rl;
-Gain tScalerR => rr;
+Gain tScalerL => rev;
 0.25 => tScalerL.gain;
-0.25 => tScalerR.gain;
 Pan2 negPan2;
 -1. => negPan2.pan;
-negPan2.left => tScalerL;
-negPan2.right => tScalerR;
+negPan2 => tScalerL;
 Pan2 negPan1;
 -.5 => negPan1.pan;
-negPan1.left => tScalerL;
-negPan2.right => tScalerR;
+negPan1 => tScalerL;
 Pan2 posPan1;
 .5 => posPan1.pan;
-posPan1.left => tScalerL;
-posPan1.right => tScalerR;
+posPan1 => tScalerL;
 Pan2 posPan2;
 1. => posPan2.pan;
-posPan2.left => tScalerL;
-posPan2.right => tScalerR;
+posPan2 => tScalerL;
 Blit tNeg2 => negPan2;
 Blit tNeg1 => negPan1;
 Blit tPos1 => posPan1;
@@ -770,15 +761,13 @@ Blit tPos2 => posPan2;
 
 // A minor scale
 [220.0, 246.94, 261.63, 293.66, 329.63, 349.23, 392.0] @=> float scale[];
-[
-  [130.81, 164.81, 261.63, 329.63],
-  [164.81, 220.0, 261.63, 329.63],
-  [164.81, 220.0, 329.63, 440.0],
-  [220.0, 261.63, 329.63, 440.0],
-  [220.0, 261.63, 440.0, 523.25],
-  [261.63, 329.63, 440.0, 523.25],
-  [261.63, 329.63, 440.0, 523.25]
-] @=> float tPitches[][];
+[130.81, 164.81, 261.63, 329.63] @=> float tPitch0[];
+[164.81, 220.0, 261.63, 329.63] @=> float tPitch1[];
+[164.81, 220.0, 329.63, 440.0] @=> float tPitch2[];
+[220.0, 261.63, 329.63, 440.0] @=> float tPitch3[];
+[220.0, 261.63, 440.0, 523.25] @=> float tPitch4[];
+[261.63, 329.63, 440.0, 523.25] @=> float tPitch5[];
+[261.63, 329.63, 440.0, 523.25] @=> float tPitch6[];
 
 fun void configureVoice(Blit voice, int enable)
 {
@@ -795,7 +784,20 @@ fun void configureVoice(Blit voice, int enable)
 
 fun void setPitch(Blit voice, int note, int number)
 {
-  tPitches[note][number] => voice.freq;
+  if (note == 0)
+    tPitch0[number] => voice.freq;
+  else if (note == 1)
+    tPitch1[number] => voice.freq;
+  else if (note == 2)
+    tPitch2[number] => voice.freq;
+  else if (note == 3)
+    tPitch3[number] => voice.freq;
+  else if (note == 4)
+    tPitch4[number] => voice.freq;
+  else if (note == 5)
+    tPitch5[number] => voice.freq;
+  else if (note == 6)
+    tPitch6[number] => voice.freq;
 }
 
 fun void sequence(int enableTNeg2, int enableTNeg1, int enableTPos1, int enableTPos2)
