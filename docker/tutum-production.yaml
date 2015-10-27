@@ -8,7 +8,7 @@ mongo-staging:
     - chuckdemos-production
   autorestart: always
 chuckdemos-production:
-  image: tutum.co/aknuds1/chuckdemos:latest
+  image: quay.io/aknuds1/chuckdemos:latest
   links:
     - mongo-staging:db
   environment:
