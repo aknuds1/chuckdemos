@@ -7,7 +7,6 @@ standard-app-packages
 insecure
 coffeescript
 stylus
-spiderable
 iron:router
 pinglamb:bootstrap3
 jag:pince
@@ -15,7 +14,6 @@ natestrauser:font-awesome
 manuelschoebel:ms-seo
 mrt:define
 aknudsen:chuckjs
-dfischer:phantomjs
 standard-minifiers
 underscorestring:underscore.string
 stevezhu:lodash

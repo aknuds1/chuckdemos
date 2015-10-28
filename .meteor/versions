@@ -19,7 +19,6 @@ ddp-client@1.2.1
 ddp-common@1.2.2
 ddp-server@1.2.2
 deps@1.0.9
-dfischer:phantomjs@1.0.4
 diff-sequence@1.0.1
 ecmascript@0.1.6
 ecmascript-runtime@0.2.6
@@ -69,7 +68,6 @@ routepolicy@1.0.6
 session@1.1.1
 spacebars@1.0.7
 spacebars-compiler@1.0.7
-spiderable@1.0.9
 standard-app-packages@1.0.6
 standard-minifiers@1.0.2
 stevezhu:lodash@1.0.2
